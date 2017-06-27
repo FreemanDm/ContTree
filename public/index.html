@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body ng-app="TestApp" ng-controller="MainCtrl">
+
+    <h1>Contact Tree</h1>
+    <div ng-repeat="contact in contacts" ng-init="contact.contacts"><p ng-click="unfold(contact.name)">{{contact.name}}</p>
+        <div class="sub" ng-repeat="c in contact.contacts" ng-init="c.contacts" ng-if="isUnfold(contact.name)" ng-click="unfold(c.name)">
+            {{c.name}}
+            <div class="subsub" ng-repeat="subC in c.contacts" ng-show="isUnfold(c.name)">
+                {{subC.name}}
+            </div>
+        </div>
+    </div>
+    <script src="lib/angular.min.js"></script>
+    <script src="code.js"></script>
+</body>
+</html>
